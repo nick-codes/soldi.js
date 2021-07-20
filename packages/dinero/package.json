@@ -1,0 +1,37 @@
+{
+  "name": "@soldi/dinero",
+  "version": "0.1.0",
+  "description": "A Dinero v1 compatibility layer for Soldi",
+  "main": "index.js",
+  "repository": "http://github.com/nick.palmer/soldi.js",
+  "author": "Nick Palmer <nick@nick.codes>",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "lint": "cd ../../ && eslint packages/cores/src packages/core/test",
+    "test": "NODE_OPTIONS=--experimental-vm-modules jest ."
+  },
+  "dependencies": {
+    "@soldi/core": "0.1.0"
+  },
+  "devDependencies": {
+    "@babel/core": "7.14.6",
+    "@babel/plugin-transform-runtime": "7.14.5",
+    "@babel/preset-env": "7.14.7",
+    "babel-jest": "27.0.6",
+    "jest": "27.0.6",
+    "jsverify": "0.8.4"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env"
+    ],
+    "plugins": [
+      "@babel/plugin-transform-runtime"
+    ]
+  },
+  "jest": {
+    "verbose": true,
+    "transform": {}
+  }
+}

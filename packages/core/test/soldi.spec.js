@@ -895,6 +895,57 @@ describe('Soldi', () => {
           precision: 2,
         });
       });
+      it('should throw with superCall from non-extended method', () => {
+        const InvalidSuperCall = Soldi.extend('InvalidSupercall', {
+          noSuper: function() {
+            return Object.assign(this.superCall('noSuper'), {
+              precision: this.getPrecision(),
+            });
+          },
+        });
+        const value = InvalidSuperCall(options);
+        expect(() => value.noSuper()).toThrow('Attempt to superCall noSuper but missing in prototype chain');
+      });
+      it('should support superCall through two levels of extension', () => {
+        const ForcePrecision = Soldi.extend('ForcePrecision', {
+          toObject: function() {
+            const ret = Object.assign(this.superCall('toObject'), {
+              precision: this.getPrecision(),
+            });
+            return ret;
+          },
+        });
+        const ForceLocale = ForcePrecision.extend('ForceLocale', {
+          toObject: function() {
+            const ret = Object.assign(this.superCall('toObject'), {
+              locale: 'en-us',
+            });
+            return ret;
+          },
+        });
+        const value = ForceLocale(options);
+        const ret = value.toObject();
+        expect(ret).toMatchObject({
+          currency,
+          amount: 0,
+          precision: 2,
+          locale: 'en-us',
+        });
+      });
+      it('should support superCall that calls override', () => {
+        const SuperCall = Soldi.extend('SuperCall', {
+          percentage: function(percent) {
+            return this.superCall('percentage', percent);
+          },
+          toObject: function() {
+            return Object.assign(this.superCall('toObject'), {
+              precision: this.getPrecision(),
+            });
+          },
+        });
+        const value = SuperCall({ currency, amount: 200 });
+        expect(value.percentage(50).getAmount()).toEqual(100);
+      });
       it.skip('should support overriding calculator', () => {
         expect(true).toEqual(false);
       });
@@ -945,6 +996,56 @@ describe('Soldi', () => {
       it.skip('should allow static extensions', () => {
         expect(true).toEqual(false);
       });
+    });
+  });
+
+  section('globals', () => {
+    const WithGlobals = Soldi.extend('WithGlobals', {
+      globals: {
+        'globalVariable': 'default',
+      },
+    });
+    it('should not define a method called globals', () => {
+      expect(WithGlobals.globals).toBeUndefined();
+    });
+    it('should allow addition of globals in an extension', () => {
+      expect(WithGlobals.globalVariable).toEqual('default');
+    });
+    it('should allow setting a known global value', () => {
+      WithGlobals.globalVariable = 'true';
+      expect(WithGlobals.globalVariable).toEqual('true');
+    });
+    it('should allow setting a known global value to the default', () => {
+      WithGlobals.globalVariable = 'default';
+      expect(WithGlobals.globalVariable).toEqual('default');
+    });
+    it('should make the global visible to further extensions', () => {
+      const CanSeeGlobal = Soldi.extend('CanSeeGlobal');
+      CanSeeGlobal.globalVariable = 'cansee';
+      expect(CanSeeGlobal.globalVariable).toEqual('cansee');
+      expect(WithGlobals.globalVariable).toEqual('cansee');
+    });
+    it('should log a warning when shadowing a global and return shadowed default', () => {
+      jest.spyOn(global.console, 'warn');
+      global.console.warn.mockImplementation(() => {});
+      const BaseGlobal = Soldi.extend('BaseGlobal', {
+        globals: {
+          baseGlobal: 'base',
+        }
+      });
+      const ShadowGlobal = BaseGlobal.extend('ShadowGlobal', {
+        getGlobal: function() {
+          return ShadowGlobal.baseGlobal;
+        },
+        globals: {
+          baseGlobal: 'shadow',
+        }
+      });
+      expect(global.console.warn).toHaveBeenCalledWith(
+        'Existing global baseGlobal with default: \'base\' shadowed by ShadowGlobal with default: \'shadow\''
+      );
+      const value = ShadowGlobal({ currency });
+      expect(value.getGlobal()).toEqual('shadow');
     });
   });
 

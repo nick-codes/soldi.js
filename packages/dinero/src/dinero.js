@@ -1,10 +1,11 @@
 import Soldi, { assert, _isDefined, _hasKey } from '@soldi/core/index.mjs';
 import withLocale from '@soldi/locale/index.mjs';
+import withFormatDinero from '@soldi/format-dinero/index.mjs';
 
 import { getPath, mergeTags, getJSON } from './helpers.js';
 
 // This is a Dinero v1 compatibility layer over Soldi
-const Dinero = withLocale(Soldi).extend('Dinero', {
+const Dinero = withFormatDinero(withLocale(Soldi)).extend('Dinero', {
   init: function(options) {
     // Dinero has a global default currency
     if (!_hasKey(options, 'currency')) {

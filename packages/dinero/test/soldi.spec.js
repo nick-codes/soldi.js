@@ -9,6 +9,10 @@ describe('Dinero', () => {
     expect(Dinero()).toBeTruthy();
   });
 
+  it('should be able toFormat amounts', () => {
+    expect(Dinero().toFormat()).toEqual('$0.00');
+  });
+
   // We shortcut convert to the same currency so we need this to get
   // coverage over that shortcut
   it('should return the same object when converting to same currency', async () => {

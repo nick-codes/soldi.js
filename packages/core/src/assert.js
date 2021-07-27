@@ -4,6 +4,20 @@ export function assert(condition, errorMessage) {
   if (!condition) throw new Error(errorMessage);
 }
 
+assert.validBase = function(name, base) {
+  assert.defined(`${name} base`, base);
+  assert.defined(`${name} base return value`, base({ currency: 'USD' }));
+};
+
+assert.hasMethod = function(instance, method) {
+  assert.defined('instance', instance);
+  assert.defined('method', method);
+  const prototype = Object.getPrototypeOf(instance);
+  assert.defined('prototype of instance', prototype);
+  // eslint-disable-next-line no-prototype-builtins
+  assert(prototype.hasOwnProperty(method), `instance is missing method ${method}`);
+};
+
 assert.validAllocation = function(a) {
   assert(Array.isArray(a), 'Allocate requires an array to allocate');
   assert(a.length > 0, 'Allocate requires at least one bucket');

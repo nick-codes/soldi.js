@@ -1,32 +1,22 @@
 import Soldi, { assert, _isDefined, _hasKey } from '@soldi/core/index.mjs';
+import withLocale from '@soldi/locale/index.mjs';
 
 import { getPath, mergeTags, getJSON } from './helpers.js';
 
 // This is a Dinero v1 compatibility layer over Soldi
-const Dinero = Soldi.extend('Dinero', {
+const Dinero = withLocale(Soldi).extend('Dinero', {
   init: function(options) {
     // Dinero has a global default currency
     if (!_hasKey(options, 'currency')) {
-      options.currency = Dinero.globalDefaultCurrency || 'USD';
+      options.currency = Dinero.globalDefaultCurrency;
     }
     return options;
   },
-  constructor: function(options) {
-    // Did they give us a locale?
-    if (_hasKey(options, 'locale')) {
-      assert.defined('options.locale', options.locale);
-      this.locale = options.locale;
-    } else {
-      // Do we have a global one set?
-      if (_hasKey(Dinero, 'globalLocale')) {
-        // If they set something it shouldn't be undefined
-        assert.defined('Dinero.globalLocale', Dinero.globalLocale);
-        // Does the global local differ from the default?
-        if (Dinero.globalLocale !== 'en-US') {
-          this.locale = Dinero.globalLocale;
-        }
-      }
-    }
+  globals: {
+    'globalDefaultCurrency': 'USD',
+    'globalExchangeRatesApi': {
+      propertyPath: 'rates.{{to}}',
+    },
   },
   // Solid uses more fluent names for these so just adapt them
   equalsTo: function(that) {
@@ -49,14 +39,6 @@ const Dinero = Soldi.extend('Dinero', {
   },
   lessThanOrEqual: function(that) {
     return this.isLessThanOrEqualTo(that);
-  },
-  // Attaching locale to a currency is kind of weird.
-  // Better to have format take that but support it anyway.
-  getLocale: function() {
-    return this.locale || 'en-US';
-  },
-  setLocale: function(locale) {
-    return this.inherit({ locale });
   },
   // Support this deprecated method.
   hasCents: function() {
@@ -108,16 +90,11 @@ const Dinero = Soldi.extend('Dinero', {
   },
 });
 
-// Dinero assumes these are set
-Dinero.globalExchangeRatesApi = {
-  propertyPath: 'rates.{{to}}',
-};
-
 // Dinero has this extra function which doesn't seem useful to me
 // outside of internal implementation but it is tested as part of
 // the external API so we add it here.
 Dinero.normalizePrecision = function(amounts) {
-  assert.defined(amounts, 'You must pass an array to normalizePrecision');
+  assert.defined('normalizePrecision amounts', amounts);
   assert(amounts.length > 1, 'You must pass at least 2 amounts to normalizePrecision');
 
   let maxPrecision = Number.MIN_VALUE;

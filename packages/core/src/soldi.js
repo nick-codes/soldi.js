@@ -87,27 +87,27 @@ class soldi extends Object {
 
     // Okay, then lookup the precision based on the currency name
     switch (this.currency) {
-      case 'BHD':
-      case 'IQD':
-      case 'JOD':
-        return 3;
-      case 'BIF':
-      case 'BYR':
-      case 'CLP':
-      case 'DJF':
-      case 'GNF':
-      case 'GWP':
-      case 'JPY':
-      case 'MGA':
-      case 'PYG':
-      case 'RWF':
-      case 'VND':
-      case 'VUV':
-      case 'XOF':
-      case 'XPF':
-        return 0;
-      default:
-        return 2;
+    case 'BHD':
+    case 'IQD':
+    case 'JOD':
+      return 3;
+    case 'BIF':
+    case 'BYR':
+    case 'CLP':
+    case 'DJF':
+    case 'GNF':
+    case 'GWP':
+    case 'JPY':
+    case 'MGA':
+    case 'PYG':
+    case 'RWF':
+    case 'VND':
+    case 'VUV':
+    case 'XOF':
+    case 'XPF':
+      return 0;
+    default:
+      return 2;
     }
   }
 
@@ -130,7 +130,7 @@ class soldi extends Object {
   add(that) {
     assert.sameCurrency(this, that);
     assert(!this.getCalculator().additionOverflows(this.getAmount(), that.getAmount()),
-           `Adding ${this} and ${that} would cause an overflow`);
+      `Adding ${this} and ${that} would cause an overflow`);
 
     return _doCombine('add', this, that);
   }
@@ -138,21 +138,21 @@ class soldi extends Object {
   subtract(that) {
     assert.sameCurrency(this, that);
     assert(!this.getCalculator().subtractionOverflows(this.getAmount(), that.getAmount()),
-           `Subtracting ${this.getAmount()} and ${that.getAmount()} would cause an overflow`);
+      `Subtracting ${this.getAmount()} and ${that.getAmount()} would cause an overflow`);
 
     return _doCombine('subtract', this, that);
   }
 
   multiply(multiplier, roundingMode) {
     assert(!this.getCalculator().multiplicationOverflows(this.getAmount(), multiplier),
-           `Multiplying ${this.getAmount()} by ${multiplier} would cause an overflow`);
+      `Multiplying ${this.getAmount()} by ${multiplier} would cause an overflow`);
 
     return _doMath('multiply', this, multiplier, roundingMode);
   }
 
   divide(divisor, roundingMode) {
     assert(!this.getCalculator().divisionOverflows(this.getAmount(), divisor),
-           `Dividing ${this.getAmount()} by ${divisor} would cause an overflow`);
+      `Dividing ${this.getAmount()} by ${divisor} would cause an overflow`);
 
     return _doMath('divide', this, divisor, roundingMode);
   }
@@ -170,7 +170,7 @@ class soldi extends Object {
     // Figure out the sum of all buckets to calculate shares
     const total = buckets.reduce((a, b) => {
       assert(!this.getCalculator().additionOverflows(a, b),
-             'The allocation buckets overflow,');
+        'The allocation buckets overflow,');
 
       return this.getCalculator().add(a, b);
     });

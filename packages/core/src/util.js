@@ -5,7 +5,7 @@ export function _hasKey(o, k) {
 }
 
 export function _isDefined(a) {
-  return typeof a !== 'undefined' && a !== null;
+  return a !== undefined && a !== null;
 }
 
 export function _isEven(n) {

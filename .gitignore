@@ -2,14 +2,14 @@
 node_modules
 *.log
 
-# For people who use npm
-package-lock.json
-packages/*/package-lock.json
+# For people who use npm at the root level
+./package-lock.json
 
 # Package
 packages/*/node_modules
-packages/*/lib
 packages/*/coverage
+packages/*/dist
+packages/*/webpack.config.js
 
 # Emacs
 .#*

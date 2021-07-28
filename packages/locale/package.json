@@ -2,13 +2,14 @@
   "name": "@soldi/locale",
   "version": "0.1.0",
   "description": "An extension layer for Soldi that adds getLocale and setLocale",
-  "main": "index.js",
+  "main": "dist/soldi-locale.js",
+  "module": "index.mjs",
   "repository": "http://github.com/nick.palmer/soldi.js",
   "author": "Nick Palmer <nick@nick.codes>",
   "license": "MIT",
   "type": "module",
   "scripts": {
-    "lint": "PWD=`pwd` && cd ../../ && eslint $PWD/src $PWD/test",
+    "lint": "cd ../../ && eslint packages/locale/src packages/locale/test",
     "test": "NODE_OPTIONS=--experimental-vm-modules jest ."
   },
   "dependencies": {

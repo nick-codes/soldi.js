@@ -4,11 +4,14 @@
   "description": "A simple currency library",
   "module": "index.mjs",
   "main": "dist/soldi-core.js",
-  "repository": "https://github.com/nick.codes/soldi.js",
+  "repository": "http://github.com/nick-codes/soldi.js",
   "author": "Nick Palmer <nick@nick.codes>",
   "license": "MIT",
   "private": false,
   "type": "module",
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "lint": "cd ../../ && eslint packages/cores/src packages/core/test",
     "test": "NODE_OPTIONS=--experimental-vm-modules jest ."

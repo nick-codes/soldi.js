@@ -4,10 +4,13 @@
   "description": "A Dinero v1 compatibility layer for Soldi",
   "main": "dist/soldi-dinero.js",
   "module": "index.mjs",
-  "repository": "http://github.com/nick.palmer/soldi.js",
+  "repository": "https://github.com/nick.codes/soldi.js",
   "author": "Nick Palmer <nick@nick.codes>",
   "license": "MIT",
   "type": "module",
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "lint": "cd ../../ && eslint packages/dinero/src packages/dinero/test",
     "test": "NODE_OPTIONS=--experimental-vm-modules jest ."

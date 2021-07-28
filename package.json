@@ -2,7 +2,7 @@
   "name": "soldi.js",
   "version": "0.1.0",
   "description": "A simple currency managmenet library",
-  "repository": "https://github.com/nick.codes/soldi.js",
+  "repository": "https://github.com/nick-codes/soldi.js",
   "author": "Nick Palmer <nick@nick.codes>",
   "license": "MIT",
   "private": true,
@@ -24,6 +24,7 @@
     "eslint": "7.31.0",
     "husky": "^7.0.0",
     "jest": "27.0.6",
+    "npm-run-all": "^4.1.5",
     "prettier": "2.3.2",
     "pretty-quick": "3.1.1",
     "terser-webpack-plugin": "^5.1.4",
@@ -31,16 +32,20 @@
     "webpack-cli": "^4.7.2"
   },
   "scripts": {
+    "login": "npm login --scope @soldi",
+    "whoami": "npm whoami",
+    "prerelease": "npm-run-all whoami clean setup lint test build",
+    "release": "lerna version && lerna publish --conventional-commits",
     "prebuild": "for i in `lerna ls --parseable` ; do cp webpack.config.js $i/ ; done",
     "build": "lerna exec --stream webpack -- --mode=production --node-env=production",
     "postbuild": "for i in `lerna ls --parseable` ; do rm $i/webpack.config.js ; done",
-    "setup": "lerna bootstrap",
+    "setup": "yarn install && lerna bootstrap",
     "test": "lerna run --stream --no-bail test --",
     "test:staged": "lerna run --stream --bail test -- --findRelatedTests --passWithNoTests",
     "test:coverage": "lerna run --stream --bail test -- --coverage",
     "lint": "eslint packages/**/src packages/**/test",
     "lint:staged": "lint-staged",
-    "clean": "rm -rf node_modules && lerna exec -- rm -rf node_modules coverage dist",
+    "clean": "rm -rf node_modules && lerna exec -- rm -rf node_modules coverage dist && find . -name '*.~*' | xargs rm",
     "prepare": "husky install"
   }
 }

@@ -4,10 +4,13 @@
   "description": "A formating layer for soldi that is compatible with Dinero v1 toFormat",
   "main": "dist/soldi-format-dinero.js",
   "module": "index.mjs",
-  "repository": "http://github.com/nick.palmer/soldi.js",
+  "repository": "http://github.com/nick-codes/soldi.js",
   "author": "Nick Palmer <nick@nick.codes>",
   "license": "MIT",
   "type": "module",
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "lint": "cd ../../ && eslint packages/format-dinero/src packages/format-dinero/test",
     "test": "NODE_OPTIONS=--experimental-vm-modules jest ."

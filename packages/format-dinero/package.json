@@ -1,6 +1,6 @@
 {
   "name": "@soldi/format-dinero",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "A formating layer for soldi that is compatible with Dinero v1 toFormat",
   "main": "dist/soldi-format-dinero.js",
   "module": "index.mjs",
@@ -16,7 +16,7 @@
     "test": "NODE_OPTIONS=--experimental-vm-modules jest ."
   },
   "dependencies": {
-    "@soldi/core": "0.1.0"
+    "@soldi/core": "0.2.0"
   },
   "devDependencies": {
     "jest": "27.0.6",

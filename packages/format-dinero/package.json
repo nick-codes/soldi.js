@@ -1,6 +1,6 @@
 {
   "name": "@soldi/format-dinero",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "A formating layer for soldi that is compatible with Dinero v1 toFormat",
   "main": "dist/soldi-format-dinero.js",
   "module": "index.mjs",

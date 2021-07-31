@@ -44,13 +44,18 @@ function _doMath(operation, a, factor, roundingMode) {
   });
 }
 
+// Use symbols to hide variable storage
+const PRECISION = Symbol('precision');
+const AMOUNT = Symbol('amount');
+const CURRENCY = Symbol('currency');
+
 class soldi extends Object {
   constructor(options = {}) {
     super();
 
     // Setup currency so we can check precision inference
     assert.validCurrency(options.currency);
-    this.currency = options.currency;
+    this[CURRENCY] = options.currency;
 
     // Did they give us a precision
     if (_hasKey(options, 'precision')) {
@@ -58,7 +63,7 @@ class soldi extends Object {
 
       // Is it not the default for the currency?
       if(options.precision !== this.getPrecision()) {
-        this.precision = options.precision;
+        this[PRECISION] = options.precision;
       }
     }
 
@@ -66,14 +71,26 @@ class soldi extends Object {
     if (_hasKey(options, 'unit')) {
       // Not rounding here so users get an error if the unit
       // has more precision than what they expected
-      this.amount = options.unit * Math.pow(10, this.getPrecision());
+      this[AMOUNT] = options.unit * Math.pow(10, this.getPrecision());
     } else {
-      this.amount = options.amount || 0;
+      this[AMOUNT] = options.amount || options[AMOUNT] || 0;
     }
-    assert.integer(this.amount);
+    assert.integer(this[AMOUNT]);
   }
 
   static get name() { return 'Soldi'; }
+
+  get precision() {
+    return this.getPrecision();
+  }
+
+  get amount() {
+    return this.getAmount();
+  }
+
+  get currency() {
+    return this.getCurrency();
+  }
 
   getCalculator() {
     return calculator;
@@ -81,12 +98,12 @@ class soldi extends Object {
 
   getPrecision() {
     // Are we working in a strange precision for the currency?
-    if (_hasKey(this, 'precision')) {
-      return this.precision;
+    if (_hasKey(this, PRECISION)) {
+      return this[PRECISION];
     }
 
     // Okay, then lookup the precision based on the currency name
-    switch (this.currency) {
+    switch (this.getCurrency()) {
     case 'BHD':
     case 'IQD':
     case 'JOD':
@@ -120,11 +137,11 @@ class soldi extends Object {
   }
 
   getAmount() {
-    return this.amount;
+    return this[AMOUNT];
   }
 
   getCurrency() {
-    return this.currency;
+    return this[CURRENCY];
   }
 
   add(that) {
@@ -356,6 +373,11 @@ class soldi extends Object {
 
   toObject() {
     const ret = Object.assign({}, this);
+    // We need to convert any Symbols to the tag for the symbol
+    Object.getOwnPropertySymbols(this).forEach(k => {
+      ret[k.toString().replace('Symbol(','').replace(')','')] = ret[k];
+      delete ret[k];
+    });
     // We don't expose keys that start with underscore
     // since these are considered "private". This
     // also hides the implementation details of

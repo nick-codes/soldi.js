@@ -680,6 +680,22 @@ describe('Soldi', () => {
     });
   });
 
+  section('getters', () => {
+    const instance = Soldi({ amount: 100, currency: 'USD', precision: 5 });
+
+    it('should have .amount', () => {
+      expect(instance.amount).toEqual(instance.getAmount());
+    });
+
+    it('should have .currency', () => {
+      expect(instance.currency).toEqual(instance.getCurrency());
+    });
+
+    it('should have .precision', () => {
+      expect(instance.precision).toEqual(instance.getPrecision());
+    });
+  });
+
   section('static operations', () => {
     it('should have the correct class name', () => {
       expect(Soldi.class.name).toEqual('Soldi');
@@ -995,6 +1011,16 @@ describe('Soldi', () => {
       });
       it.skip('should allow static extensions', () => {
         expect(true).toEqual(false);
+      });
+      it('should respect extensions to getters', () => {
+        const CustomPrecision = Soldi.extend('CustomPrecision', {
+          getPrecision: function() {
+            return 2 * this.superCall('getPrecision');
+          }
+        });
+        const custom = CustomPrecision({ currency, precision: 5 });
+        expect(custom.getPrecision()).toEqual(10);
+        expect(custom.precision).toEqual(10);
       });
     });
   });

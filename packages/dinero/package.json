@@ -4,7 +4,7 @@
   "description": "A Dinero v1 compatibility layer for Soldi",
   "main": "dist/soldi-dinero.js",
   "module": "index.mjs",
-  "repository": "https://github.com/nick.codes/soldi.js",
+  "repository": "https://github.com/nick-codes/soldi.js",
   "author": "Nick Palmer <nick@nick.codes>",
   "license": "MIT",
   "type": "module",

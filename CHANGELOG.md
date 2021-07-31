@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.2](https://github.com/nick-codes/soldi.js/compare/v0.2.1...v0.2.2) (2021-07-31)
+
+
+### Bug Fixes
+
+* repository url in dinero ([7c0a7db](https://github.com/nick-codes/soldi.js/commit/7c0a7db86ea639c519d94a4947e0ee1a55115e2c))
+
+
+
+
+
 ## [0.2.1](https://github.com/nick-codes/soldi.js/compare/v0.2.0...v0.2.1) (2021-07-30)
 
 

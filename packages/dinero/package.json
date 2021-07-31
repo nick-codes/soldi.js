@@ -1,6 +1,6 @@
 {
   "name": "@soldi/dinero",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "A Dinero v1 compatibility layer for Soldi",
   "main": "dist/soldi-dinero.js",
   "module": "index.mjs",

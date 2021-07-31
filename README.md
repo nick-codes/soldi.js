@@ -32,9 +32,9 @@ of Soldi.
 Extensions are easy to write and test separate from Soldi, making
 the system flexible and easy to extend and maintain.
 
-For more on the rational behind writing Solid in the first place,
+For more on the rationale behind writing Solid in the first place,
 please read our
-[RATIONAL.md](https://github.com/nick-codes/soldi.js/tree/main/RATIONAL.md).
+[RATIONALE.md](https://github.com/nick-codes/soldi.js/tree/main/RATIONALE.md).
 
 ## Installation
 

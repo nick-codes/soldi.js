@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://github.com/nick-codes/soldi.js/compare/v0.2.2...v0.3.0) (2021-08-02)
+
+
+### Bug Fixes
+
+* remove console.log ([ebf7715](https://github.com/nick-codes/soldi.js/commit/ebf77150c0dcc7458f33eefc3e5a35e57719a034))
+
+
+### Features
+
+* add getters to @soldi/core ([ce15562](https://github.com/nick-codes/soldi.js/commit/ce15562876728e2bf690803347622cb81d0c55f2))
+* add property support for extensions ([06e5ef5](https://github.com/nick-codes/soldi.js/commit/06e5ef594a381062e4c768b9805e45e2468e3c98))
+
+
+
+
+
 # 0.2.0 (2021-07-30)
 
 

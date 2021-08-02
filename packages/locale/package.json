@@ -1,6 +1,6 @@
 {
   "name": "@soldi/locale",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "An extension layer for Soldi that adds getLocale and setLocale",
   "main": "dist/soldi-locale.js",
   "module": "index.mjs",
@@ -16,7 +16,7 @@
     "test": "NODE_OPTIONS=--experimental-vm-modules jest ."
   },
   "dependencies": {
-    "@soldi/core": "0.2.0"
+    "@soldi/core": "0.3.0"
   },
   "devDependencies": {
     "jest": "27.0.6",

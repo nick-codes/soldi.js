@@ -13,6 +13,13 @@ describe('withLocale', () => {
     expect(instance.getLocale).toBeTruthy();
     expect(instance.setLocale).toBeTruthy();
   });
+  describe('#locale', () => {
+    test('should return the right locale as a string', () => {
+      expect(
+        WithLocale({ currency: 'USD', locale: 'fr-FR' }).locale
+      ).toBe('fr-FR');
+    });
+  });
   describe('#getLocale', () => {
     test('should return the right locale as a string', () => {
       expect(

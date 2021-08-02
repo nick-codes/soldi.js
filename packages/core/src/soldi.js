@@ -421,7 +421,6 @@ Soldi.extend = function(name, methods) {
       // need to add a get method
       if (_isDefined(properties)) {
         for (const property in properties) {
-          console.log('Adding:', property);
           const getter = properties[property];
           Object.defineProperty(this, property, {
             get: this[getter]

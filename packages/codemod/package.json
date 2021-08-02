@@ -1,0 +1,35 @@
+{
+  "name": "@soldi/codemod",
+  "version": "0.1.0",
+  "description": "Codemod's for updating Dindero v1 code to @soldi/dinero or @soldi/core",
+  "module": "index.mjs",
+  "main": "dist/soldi-codemod.js",
+  "repository": "http://github.com/nick-codes/soldi.js",
+  "author": "Nick Palmer <nick@nick.codes>",
+  "license": "MIT",
+  "private": false,
+  "type": "module",
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "lint": "cd ../../ && eslint packages/codemod/transforms",
+    "test": "NODE_OPTIONS=--experimental-vm-modules jest ."
+  },
+  "dependencies": {
+    "@babel/core": "^7.14.8",
+    "@babel/preset-env": "^7.14.8",
+    "jscodeshift": "^0.13.0"
+  },
+  "devDependencies": {
+    "@jest/core": "27.0.6",
+    "@jest/globals": "27.0.6"
+  },
+  "jest": {
+    "verbose": true,
+    "transform": {},
+    "collectCoverageFrom": [
+      "transforms/**/*"
+    ]
+  }
+}

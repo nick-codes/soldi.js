@@ -1,6 +1,6 @@
 {
   "name": "@soldi/dinero",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "A Dinero v1 compatibility layer for Soldi",
   "main": "dist/soldi-dinero.js",
   "module": "index.mjs",
@@ -16,9 +16,9 @@
     "test": "NODE_OPTIONS=--experimental-vm-modules jest ."
   },
   "dependencies": {
-    "@soldi/core": "0.3.0",
-    "@soldi/format-dinero": "0.3.0",
-    "@soldi/locale": "0.3.0"
+    "@soldi/core": "0.4.0",
+    "@soldi/format-dinero": "0.4.0",
+    "@soldi/locale": "0.4.0"
   },
   "devDependencies": {
     "jest": "27.0.6",

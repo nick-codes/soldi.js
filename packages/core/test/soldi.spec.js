@@ -1022,6 +1022,20 @@ describe('Soldi', () => {
         expect(custom.getPrecision()).toEqual(10);
         expect(custom.precision).toEqual(10);
       });
+      it('should support properties on extensions', () => {
+        const value = 'custom property';
+        const CustomProperty = Soldi.extend('CustomProperty', {
+          properties: {
+            property: 'getProperty',
+          },
+          getProperty: function() {
+            return value;
+          }
+        });
+        const custom = CustomProperty({ currency });
+        expect(custom.getProperty()).toEqual(value);
+        expect(custom.property).toEqual(value);
+      });
     });
   });
 

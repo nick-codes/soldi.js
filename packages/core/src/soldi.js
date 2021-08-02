@@ -19,6 +19,8 @@ const _globals = {
   values: {},
 };
 
+const tagForSymbol = tag => tag.toString().replace('Symbol(','').replace(')','');
+
 function _doCombine(operation, a, b) {
   // Do we need to normalize?
   if (!a.hasSamePrecisionAs(b)) {
@@ -375,7 +377,7 @@ class soldi extends Object {
     const ret = Object.assign({}, this);
     // We need to convert any Symbols to the tag for the symbol
     Object.getOwnPropertySymbols(this).forEach(k => {
-      ret[k.toString().replace('Symbol(','').replace(')','')] = ret[k];
+      ret[tagForSymbol(k)] = ret[k];
       delete ret[k];
     });
     // We don't expose keys that start with underscore
@@ -407,11 +409,25 @@ Soldi.extend = function(name, methods) {
   const subInit = _hasKey(methods, 'init') ? methods.init : (options) => options;
   const baseClass = this.class;
 
+  const properties = _hasKey(methods, 'properties') ? methods.properties : undefined;
+
   // Build the internal subclass
   const extended = class extends baseClass {
     constructor(options) {
       super(options);
       subConstructor.call(this, options);
+
+      // If we have any properties defined we
+      // need to add a get method
+      if (_isDefined(properties)) {
+        for (const property in properties) {
+          console.log('Adding:', property);
+          const getter = properties[property];
+          Object.defineProperty(this, property, {
+            get: this[getter]
+          });
+        }
+      }
     }
     static get name() { return `${name}(${baseClass.name})`; }
   };
@@ -466,7 +482,7 @@ Soldi.extend = function(name, methods) {
   // Add any methods needed for the extension
   if (methods) {
     Object.keys(methods).forEach(method => {
-      if (!['init', 'constructor', 'globals'].includes(method)) {
+      if (!['init', 'constructor', 'globals', 'properties'].includes(method)) {
         extended.prototype[method] = methods[method];
       }
     });

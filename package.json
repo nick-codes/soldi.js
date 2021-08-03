@@ -41,6 +41,7 @@
     "build": "lerna exec --stream  --ignore codemod webpack -- --mode=production --node-env=production",
     "postbuild": "lerna exec --ignore codemod rm webpack.config.js",
     "setup": "yarn install && lerna bootstrap",
+    "setup:frozen": "yarn install --frozen-lockfile && lerna bootstrap",
     "test": "lerna run --stream --no-bail test --",
     "test:staged": "lerna run --stream --bail test -- --findRelatedTests --passWithNoTests",
     "test:coverage": "lerna run --stream --bail test -- --coverage",

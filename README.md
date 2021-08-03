@@ -3,15 +3,17 @@
 Soldi is a simple currency manipulation library for safely calculating
 with monetary values in JavaScript.
 
+[![codecov](https://codecov.io/gh/nick-codes/soldi.js/branch/main/graph/badge.svg?token=tCJwUHxIhU)](https://codecov.io/gh/nick-codes/soldi.js) ![quality](https://github.com/nick-codes/soldi.js/actions/workflows/quality.yml/badge.svg) ![dependencies](https://david-dm.org/nick-codes/soldi.js.svg) ![npm (scoped)](https://img.shields.io/npm/v/@soldi/core?color=brightgreen) ![GitHub](https://img.shields.io/github/license/nick-codes/soldi.js) ![Snyk Vulnerabilities for GitHub Repo](https://img.shields.io/snyk/vulnerabilities/github/nick-codes/soldi.js)
+
 ## Benefits of Soldi
 
 - Fluent, immutable, and chainable API
 - Easily extensible, with several extensions already written
 - Overflow detection
-- Dinero v1 compatibility with a smaller bundle size
+- Dinero v1 compatibility
 - Currency exchange features
 - Formatting Options via Extensions
-- 100% test coverage
+- 100% test coverage [![codecov](https://codecov.io/gh/nick-codes/soldi.js/branch/main/graph/badge.svg?token=tCJwUHxIhU)](https://codecov.io/gh/nick-codes/soldi.js)
 - Enthusiastic maintainer open to community contributions
 
 ## About Soldi
@@ -79,8 +81,6 @@ behavior that are not covered with the current suite of unit tests.
 
 In no particular order:
 
-- CI setup
-- codemod to make migration to `@soldi/dinero` easy
 - codemod to make migration from `@soldi/dinero` to `@soldi/core` easy
 - `format-intl` package to use `Intl` instead of `Number.toLocaleFormat`
 - `calculate-bigint` package to use BigInt for manipulating values

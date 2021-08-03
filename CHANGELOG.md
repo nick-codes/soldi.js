@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.1](https://github.com/nick-codes/soldi.js/compare/v0.4.0...v0.4.1) (2021-08-03)
+
+
+### Bug Fixes
+
+* security alert against glob-parent ([627dd99](https://github.com/nick-codes/soldi.js/commit/627dd99714d85f0a666f3fb3f9bf3156be5d0dc6))
+
+
+
+
+
 # [0.4.0](https://github.com/nick-codes/soldi.js/compare/v0.3.0...v0.4.0) (2021-08-02)
 
 

@@ -1,6 +1,6 @@
 {
   "name": "@soldi/codemod",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "description": "Codemod's for updating Dindero v1 code to @soldi/dinero or @soldi/core",
   "module": "index.mjs",
   "main": "dist/soldi-codemod.js",

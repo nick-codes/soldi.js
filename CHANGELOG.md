@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.2](https://github.com/nick-codes/soldi.js/compare/v0.4.1...v0.4.2) (2021-10-27)
+
+
+### Bug Fixes
+
+* **deps:** update dependency lint-staged to v11.1.2 ([#10](https://github.com/nick-codes/soldi.js/issues/10)) ([261859d](https://github.com/nick-codes/soldi.js/commit/261859d0848a9203ae34c572c5d6a0093db2da82))
+* **deps:** update dependency lint-staged to v11.2.6 ([#27](https://github.com/nick-codes/soldi.js/issues/27)) ([0c642c1](https://github.com/nick-codes/soldi.js/commit/0c642c11ab06c9d90ebfe43f028fd4d9fcf9fd67))
+
+
+
+
+
 ## [0.4.1](https://github.com/nick-codes/soldi.js/compare/v0.4.0...v0.4.1) (2021-08-03)
 
 

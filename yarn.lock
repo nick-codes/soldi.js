@@ -2883,12 +2883,12 @@
   resolved "https://registry.yarnpkg.com/@webpack-cli/configtest/-/configtest-1.1.0.tgz#8342bef0badfb7dfd3b576f2574ab80c725be043"
   integrity sha512-ttOkEkoalEHa7RaFYpM0ErK1xc4twg3Am9hfHhL7MVqlHebnkYd2wuI/ZqTDj0cVzZho6PdinY0phFZV3O0Mzg==
 
-"@webpack-cli/generators@2.2.0":
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/@webpack-cli/generators/-/generators-2.2.0.tgz#ea48faeb2f04931574789b2c2abf12d52ccb6980"
-  integrity sha512-dhwCT5UjhpME8GwB8maMJ4R3C/zQtkrE6TNZoVtUe6aUsWaKUDoV1+rHJvtg+QpNEbRDZu5eCrf9YRBNL/VFEA==
+"@webpack-cli/generators@2.4.1":
+  version "2.4.1"
+  resolved "https://registry.yarnpkg.com/@webpack-cli/generators/-/generators-2.4.1.tgz#738c0b2f209d7d9e0393f2d10f1a4569072825be"
+  integrity sha512-0JO0a56Wsa5Z8Njdwgds3Nx9AXXwSB0vZkcFrDdXjX+SKMKiUm+dhZGW3HRzDob/ICjOCBy3lIWhNfiM+fV1FA==
   dependencies:
-    colorette "^1.2.1"
+    webpack-cli "^4.9.1"
     yeoman-environment "^2.10.3"
     yeoman-generator "^4.12.0"
 
@@ -3781,7 +3781,7 @@ color-name@~1.1.4:
   resolved "https://registry.yarnpkg.com/color-name/-/color-name-1.1.4.tgz#c2a09a87acbde69543de6f63fa3995c826c536a2"
   integrity sha512-dOy+3AuW3a2wNbZHIuMZpTcgjGuLU/uBL/ubcZF9OXbDo8ff4O8yVp5Bf0efS8uEoYo5q4Fx7dY9OgQGXgAsQA==
 
-colorette@^1.2.1, colorette@^1.2.2:
+colorette@^1.2.2:
   version "1.2.2"
   resolved "https://registry.yarnpkg.com/colorette/-/colorette-1.2.2.tgz#cbcc79d5e99caea2dbf10eb3a26fd8b3e6acfa94"
   integrity sha512-MKGMzyfeuutC/ZJ1cba9NqcNpfeqMUcYmyF1ZFY6/Cn7CNSAKx6a+s48sqLqyAiZuaP2TcqMhoo+dlwFnVxT9w==
@@ -9743,7 +9743,7 @@ webidl-conversions@^6.1.0:
   resolved "https://registry.yarnpkg.com/webidl-conversions/-/webidl-conversions-6.1.0.tgz#9111b4d7ea80acd40f5270d666621afa78b69514"
   integrity sha512-qBIvFLGiBpLjfwmYAaHPXsn+ho5xZnGvyGvsarywGNc8VyQJUMHJ8OBKGGrPER0okBeMDaan4mNBlgBROxuI8w==
 
-webpack-cli@4.9.1:
+webpack-cli@4.9.1, webpack-cli@^4.9.1:
   version "4.9.1"
   resolved "https://registry.yarnpkg.com/webpack-cli/-/webpack-cli-4.9.1.tgz#b64be825e2d1b130f285c314caa3b1ba9a4632b3"
   integrity sha512-JYRFVuyFpzDxMDB+v/nanUdQYcZtqFPGzmlW4s+UkPMFhSpfRNmf1z4AwYcHJVdvEFAM7FFCQdNTpsBYhDLusQ==

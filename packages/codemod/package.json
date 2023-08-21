@@ -22,7 +22,7 @@
     "jscodeshift": "^0.13.0"
   },
   "devDependencies": {
-    "@jest/core": "27.3.1",
+    "@jest/core": "27.5.1",
     "@jest/globals": "27.3.1"
   },
   "jest": {
